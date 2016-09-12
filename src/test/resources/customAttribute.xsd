@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:libhpc="http://www.libhpc.imperial.ac.uk/SchemaAnnotation"
+           xmlns="http://www.libhpc.imperial.ac.uk"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.libhpc.imperial.ac.uk"
+           elementFormDefault="qualified"
+           xsi:schemaLocation="http://www.libhpc.imperial.ac.uk LibhpcSchemaAnnotation.xsd">
+
+
+   <xs:element name="CP2K" libhpc:trueName="CP2K">
+      <xs:complexType>
+         <xs:annotation>
+            <xs:appinfo>
+               <libhpc:documentation>CP2K version 2.7 compiled on Wed Nov 11 09:47:10 GMT 2015 using svn:15790</libhpc:documentation>
+            </xs:appinfo>
+         </xs:annotation>
+         <xs:sequence>
+            <xs:element name="CP2K_SECTION_GLOBAL"
+                        libhpc:trueName="GLOBAL"
+                        minOccurs="0"
+                        maxOccurs="1">
+               <xs:annotation>
+                  <xs:appinfo>
+                     <libhpc:documentation>Section with general information regarding which kind of simulation to perform an parameters for the whole PROGRAM</libhpc:documentation>
+                  </xs:appinfo>
+               </xs:annotation>
+               <xs:complexType>
+                  <xs:sequence>
+                     <xs:element name="CP2K_KEYWORD_BLACS_GRID"
+                                 libhpc:trueName="BLACS_GRID"
+                                 minOccurs="0"
+                                 maxOccurs="1"
+                                 default="SQUARE">
+                        <xs:annotation>
+                           <xs:appinfo>
+                              <libhpc:documentation>how to distribute the processors on the 2d grid needed by BLACS (and thus SCALAPACK)</libhpc:documentation>
+                           </xs:appinfo>
+                        </xs:annotation>
+                        <xs:simpleType>
+                           <xs:restriction base="xs:string">
+                              <xs:enumeration value="SQUARE">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <libhpc:documentation>Distribution by matrix blocks</libhpc:documentation>
+                                    </xs:appinfo>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="ROW">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <libhpc:documentation>Distribution by matrix rows</libhpc:documentation>
+                                    </xs:appinfo>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                              <xs:enumeration value="COLUMN">
+                                 <xs:annotation>
+                                    <xs:appinfo>
+                                       <libhpc:documentation>Distribution by matrix columns</libhpc:documentation>
+                                    </xs:appinfo>
+                                 </xs:annotation>
+                              </xs:enumeration>
+                           </xs:restriction>
+                        </xs:simpleType>
+                     </xs:element>
+                  </xs:sequence>
+               </xs:complexType>
+            </xs:element>
+         </xs:sequence>
+      </xs:complexType>
+   </xs:element>
+</xs:schema>
